@@ -6,13 +6,13 @@
 			"include": "#keywords"
 		},
 		{
-			"include": "#expression"
-		},
-		{
 			"include": "#strings"
 		},
 		{
 			"include": "#string"
+		},
+		{
+			"include": "#expression"
 		},
 		{
 			"include": "#params"
@@ -22,25 +22,21 @@
 		"keywords": {
 			"patterns": [
 				{
-					"name": "comment.line",
+					"name": "comment.line.double-slash.algo-papier",
 					"match": "//.*$"
 				},
 				{
-					"name": "comment.block",
+					"name": "comment.block.algo-papier",
 					"begin": "\\/\\*",
 					"end": "\\*\\/"
 				},
 				{
 					"name": "keyword.control.algo-papier",
-					"match": "\\b(si|sinon_si|sinon|fsi|procedure|fonction|algorithme|tant_que|pour|renvoie|jusqua|repeter|sortie|continue|choix_sur|fchoix|cas|autre|entre|variant_de|a|NON)\\b"
+					"match": "\\b(si|sinon_si|sinon|fsi|procedure|fonction|algorithme|tant_que|pour|renvoie|jusqua|repeter|sortie|continue|choix_sur|fchoix|cas|autre|entre|variant_de|a|NON|boucle|fboucle|declarer)\\b"
 				},
 				{
-					"name": "support.type",
-					"match": "\\b(faire|ffaire|debut|fin|boucle|fboucle)\\b"
-				},
-				{
-					"name": "variable.language",
-					"match": "\\b(declarer)\\b"
+					"name": "storage.modifier.algo-papier",
+					"match": "\\b(debut|fin|faire|ffaire)\\b"
 				},
 				{
 					"name": "storage.type",
@@ -76,7 +72,7 @@
 			]
 		},
 		"string": {
-			"name": "constant.character",
+			"name": "string.quoted.single.algo-papier",
 			"begin": "'",
 			"end": "'",
 			"patterns": [
