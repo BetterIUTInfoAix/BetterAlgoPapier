@@ -28,6 +28,11 @@
     "contributes": {
         "configurationDefaults": {
             "[algo-papier]": {
+                "editor.quickSuggestions": {
+                    "other": true,
+                    "comments": "off",
+                    "strings": "off"
+                },
                 "editor.suggest.snippetsPreventQuickSuggestions": false
             }
         },
