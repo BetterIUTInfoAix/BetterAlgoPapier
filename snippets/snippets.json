@@ -224,6 +224,13 @@
 		],
 		"description": "Vrai si espace ou tabulation"
 	},
+	"ispunct": {
+		"prefix": "ispunct",
+		"body": [
+			"ispunct (${1:caractere})"
+		],
+		"description": "Vrai si signe de ponctuation"
+	},
 	"isupper": {
 		"prefix": "isupper",
 		"body": [
@@ -248,7 +255,7 @@
 		"description": "Insertion d'un bloc \"si\""
 	},
 	"si_sinon": {
-		"prefix": "sisinon",
+		"prefix": ["si_sinon", "sisinon"],
 		"body": [
 			"si (${1:condition})",
 			"\t$0",
@@ -266,21 +273,21 @@
 		"description": "Déclaration d'une variable (menu de types)"
 	},
 	"declarer et affecter": {
-		"prefix": "declarer et affecter",
+		"prefix": "declarer_affecter",
 		"body": [
 			"declarer ${1:nom} : ${2|entier,entier_naturel,reel,booleen,caractere,string,tableau_de|} <- ${3:valeur};"
 		],
 		"description": "Déclaration avec affectation (menu de types)"
 	},
 	"declarer constante": {
-		"prefix": "declarer constante",
+		"prefix": "declarer_constante",
 		"body": [
 			"declarer K${1:nom} : ${2|entier,entier_naturel,reel,booleen,caractere,string,tableau_de|} <- ${3:valeur};"
 		],
 		"description": "Déclaration d'une constante (menu de types)"
 	},
-	"<-": {
-		"prefix": "prend",
+	"assignation": {
+		"prefix": ["<-", "prend"],
 		"body": [
 			"<- $0"
 		],

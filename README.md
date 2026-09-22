@@ -42,7 +42,7 @@ codium --install-extension better-algo-papier-X.Y.Z.vsix   # VSCodium
 
 Les fonctionnalités s'activent automatiquement sur tous les fichiers avec l'extension `.algo`.
 
-Pour un fichier avec une autre extension, cliquez sur le nom du langage en bas à droite de la fenêtre (souvent `Plain Text`), puis choisissez `algo-aix` dans la liste.
+Pour un fichier avec une autre extension, cliquez sur le nom du langage en bas à droite de la fenêtre (souvent `Plain Text`), puis choisissez `algo-papier` dans la liste.
 
 ## Contribuer
 
