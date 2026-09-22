@@ -86,6 +86,12 @@ git push origin main v1.0.2
 Le tag déclenche le workflow GitHub qui construit le `.vsix` et crée la
 Release automatiquement.
 
+> Dépendances CI : les actions sont épinglées au SHA (`uses: ...@<SHA> # vX`)
+> et `vsce` à une version exacte. Ne jamais repasser un tag mutable :
+> accepter la PR Dependabot hebdo, ou résoudre le nouveau SHA via
+> `gh api repos/<owner>/<repo>/git/ref/tags/<tag> --jq .object.sha`
+> (si type `tag`, peler avec `gh api repos/<owner>/<repo>/git/tags/<sha> --jq .object.sha`).
+
 ### 2. Marketplace VS Code
 
 ```bash

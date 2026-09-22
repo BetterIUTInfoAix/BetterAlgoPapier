@@ -11,36 +11,45 @@ on:
         required: true
         type: string
 
-permissions:
-  contents: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Récupérer le code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Vérifier cohérence tag / package.json
+        run: |
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          TAG="${{ github.event.inputs.tag_name || github.ref_name }}"
+          TAG_VERSION="${TAG#v}"
+          if [ "$TAG_VERSION" != "$PKG_VERSION" ]; then
+            echo "::error::Tag $TAG incohérent avec package.json ($PKG_VERSION)"
+            exit 1
+          fi
 
       - name: Installer Node.js
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: "26"
 
       - name: Construire le .vsix
-        run: npx --yes @vscode/vsce package --skip-license --no-dependencies
+        run: npx --yes @vscode/vsce@4.0.0 package --skip-license --no-dependencies
 
       - name: Vérifier que le fichier a bien été produit
         run: ls -la *.vsix
 
       - name: Garder le .vsix comme artefact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: vsix
           path: "*.vsix"
 
       - name: Créer la Release GitHub avec le .vsix attaché
-        uses: softprops/action-gh-release@v3
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         with:
           tag_name: ${{ github.event.inputs.tag_name || github.ref_name }}
           target_commitish: ${{ github.sha }}
