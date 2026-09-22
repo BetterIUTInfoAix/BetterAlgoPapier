@@ -32,7 +32,7 @@
 				},
 				{
 					"name": "keyword.control.algo-papier",
-					"match": "\\b(si|sinon_si|sinon|fsi|procedure|fonction|algorithme|tant_que|pour|renvoie|jusqua|repeter|sortie|continue)\\b"
+					"match": "\\b(si|sinon_si|sinon|fsi|procedure|fonction|algorithme|tant_que|pour|renvoie|jusqua|repeter|sortie|continue|choix_sur|fchoix|cas|autre|entre|variant_de|a|NON)\\b"
 				},
 				{
 					"name": "support.type",
@@ -56,7 +56,7 @@
 				},
 			{
 				"name": "keyword.operator.algo-papier",
-				"match": "<-|==|!=|<=|>=|<|>"
+				"match": "<-|==|!=|<=|>=|<|>|=|\\+|-|\\*|/|%"
 			},
 			{
 				"name": "keyword.control.algo-papier",
