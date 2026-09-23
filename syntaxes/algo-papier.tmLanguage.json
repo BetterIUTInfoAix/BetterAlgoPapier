@@ -30,14 +30,46 @@
 					"begin": "\\/\\*",
 					"end": "\\*\\/"
 				},
-				{
-					"name": "keyword.control.algo-papier",
-					"match": "\\b(si|sinon_si|sinon|fsi|procedure|fonction|algorithme|tant_que|pour|renvoie|jusqua|repeter|sortie|continue|choix_sur|fchoix|cas|autre|entre|variant_de|a|NON|boucle|fboucle|declarer)\\b"
-				},
-				{
-					"name": "storage.modifier.algo-papier",
-					"match": "\\b(debut|fin|faire|ffaire)\\b"
-				},
+			{
+				"name": "storage.modifier.algo-papier",
+				"match": "^\\s*(debut|fin)\\b(?=\\s*(?://.*)?$)"
+			},
+			{
+				"name": "storage.modifier.algo-papier",
+				"match": "\\bfaire\\b(?=\\s*(?://.*)?$)"
+			},
+			{
+				"name": "storage.modifier.algo-papier",
+				"match": "\\bffaire\\b"
+			},
+			{
+				"name": "keyword.control.algo-papier",
+				"match": "^\\s*pour\\b"
+			},
+			{
+				"name": "keyword.control.algo-papier",
+				"match": "(?<=^\\s*pour\\b.*)\\ba\\b"
+			},
+			{
+				"name": "keyword.control.algo-papier",
+				"match": "(?<=^\\s*choix_sur\\b.*)\\bentre\\b"
+			},
+			{
+				"name": "keyword.control.algo-papier",
+				"match": "^\\s*cas\\b(?=[^:\\n]*:)"
+			},
+			{
+				"name": "keyword.control.algo-papier",
+				"match": "^\\s*autre\\b(?=\\s*:)"
+			},
+			{
+				"name": "keyword.control.algo-papier",
+				"match": "\\b(sortie|continue)\\b(?=\\s*;)"
+			},
+			{
+				"name": "keyword.control.algo-papier",
+				"match": "\\b(si|sinon_si|sinon|fsi|procedure|fonction|algorithme|tant_que|renvoie|jusqua|repeter|fchoix|choix_sur|variant_de|NON|boucle|fboucle|declarer)\\b"
+			},
 				{
 					"name": "storage.type",
 					"match": "\\b(caractere|string|tableau_de|booleen|entier|entier_naturel|reel)\\b"
