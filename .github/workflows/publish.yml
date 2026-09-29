@@ -1,0 +1,63 @@
+name: Publier l'extension
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version à publier (ex: 1.0.2)"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Vérifier la version dans package.json
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          INPUT_VERSION="${{ github.event.inputs.version }}"
+          echo "Version dans package.json: $PACKAGE_VERSION"
+          echo "Version demandée: $INPUT_VERSION"
+          if [ "$PACKAGE_VERSION" != "$INPUT_VERSION" ]; then
+            echo "ERREUR: La version dans package.json ($PACKAGE_VERSION) ne correspond pas à la version demandée ($INPUT_VERSION)"
+            exit 1
+          fi
+          echo "Versions concordantes"
+
+      - name: Construire le .vsix
+        run: npx --yes @vscode/vsce package --skip-license --no-dependencies
+
+      - name: Vérifier que le fichier a bien été produit
+        run: ls -la *.vsix
+
+      - name: Publier sur VSCode Marketplace
+        run: npx --yes @vscode/vsce publish --skip-license --no-dependencies
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+
+      - name: Publier sur Open VSX
+        run: npx --yes ovsx publish --skip-license --no-dependencies
+        env:
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}
+
+      - name: Résumé de la publication
+        run: |
+          echo "Extension publiée avec succès"
+          echo "   - Version: ${{ github.event.inputs.version }}"
+          echo "   - VSCode Marketplace: https://marketplace.visualstudio.com/items?itemName=betteriutinfoaix.better-algo-papier"
+          echo "   - Open VSX: https://open-vsx.org/extension/betteriutinfoaix/better-algo-papier"
