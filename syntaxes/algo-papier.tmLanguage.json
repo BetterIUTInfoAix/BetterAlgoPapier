@@ -47,8 +47,13 @@
 				"match": "^\\s*pour\\b"
 			},
 			{
-				"name": "keyword.control.algo-papier",
-				"match": "(?<=^\\s*pour\\b.*)\\ba\\b"
+				"comment": "a : mot-cle seulement comme premier 'a' apres variant_de (pour ... variant_de X a Y)",
+				"match": "\\b(variant_de)\\b((?:(?!\\ba\\b).)*?)\\b(a)\\b",
+				"captures": {
+					"1": { "name": "keyword.control.algo-papier" },
+					"2": { "patterns": [ { "include": "$self" } ] },
+					"3": { "name": "keyword.control.algo-papier" }
+				}
 			},
 			{
 				"name": "keyword.control.algo-papier",
@@ -63,8 +68,11 @@
 				"match": "^\\s*autre\\b(?=\\s*:)"
 			},
 			{
-				"name": "keyword.control.algo-papier",
-				"match": "\\b(sortie|continue)\\b(?=\\s*;)"
+				"comment": "sortie/continue : mot-cle seulement comme instruction (debut de ligne ou apres la condition d'un si)",
+				"match": "(^|\\))\\s*\\b(sortie|continue)\\b(?=\\s*;)",
+				"captures": {
+					"2": { "name": "keyword.control.algo-papier" }
+				}
 			},
 			{
 				"name": "keyword.control.algo-papier",

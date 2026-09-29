@@ -1,35 +1,12 @@
 {
     "comments": {
-        // symbol used for single line comment. Remove this entry if your language does not support line comments
         "lineComment": "//",
-        // symbols used for start and end a block comment. Remove this entry if your language does not support block comments
         "blockComment": [
             "/*",
             "*/"
         ]
     },
-    // symbols used as brackets
     "brackets": [
-        [
-            "debut",
-            "fin"
-        ],
-        [
-            "faire",
-            "ffaire"
-        ],
-        [
-            "boucle",
-            "fboucle"
-        ],
-        [
-            "si",
-            "fsi"
-        ],
-        [
-            "choix_sur",
-            "fchoix"
-        ],
         [
             "{",
             "}"
@@ -43,9 +20,11 @@
             ")"
         ]
     ],
-    // symbols that are auto closed when typing
-    // (seulement des symboles : les mots-clés ne sont PAS auto-fermés,
-    // sinon "si" insère "fsi" même dans les commentaires)
+    "colorizedBracketPairs": [
+        ["(", ")"],
+        ["[", "]"],
+        ["{", "}"]
+    ],
     "autoClosingPairs": [
         [
             "{",
@@ -68,28 +47,7 @@
             "'"
         ]
     ],
-    // symbols that that can be used to surround a selection
     "surroundingPairs": [
-        [
-            "debut",
-            "fin"
-        ],
-        [
-            "faire",
-            "ffaire"
-        ],
-        [
-            "boucle",
-            "fboucle"
-        ],
-        [
-            "si",
-            "fsi"
-        ],
-        [
-            "choix_sur",
-            "fchoix"
-        ],
         [
             "{",
             "}"
@@ -111,13 +69,10 @@
             "'"
         ]
     ],
-    // indentation automatique : indente après les mots ouvrants,
-    // désindente sur la ligne d'un mot fermant
     "indentationRules": {
         "increaseIndentPattern": "^\\s*(algorithme\\b.*|procedure\\b.*|fonction\\b.*|debut|si\\s*\\(.*\\)|sinon|sinon_si\\s*\\(.*\\)|faire|boucle|repeter|choix_sur\\b.*entre|cas\\b.*:|autre\\s*:)\\s*$",
         "decreaseIndentPattern": "^\\s*(fin|fsi|sinon|sinon_si\\s*\\(.*\\)|ffaire|fboucle|fchoix|cas\\b.*:|autre\\s*:)\\s*$"
     },
-    // pliage de code sur les blocs delimites par mots-cles
     "folding": {
         "markers": {
             "start": "^\\s*(algorithme\\b|procedure\\b|fonction\\b|debut\\b|si\\s*\\(|boucle\\b|repeter\\b|choix_sur\\b|faire\\b)",
