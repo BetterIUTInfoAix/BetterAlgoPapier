@@ -27,6 +27,15 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Vérifier la version dans package.json
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "Version dans package.json: $VERSION"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
       - name: Construire le .vsix
         run: npx --yes @vscode/vsce package --skip-license --no-dependencies
 
@@ -38,6 +47,16 @@ jobs:
         with:
           name: vsix
           path: "*.vsix"
+
+      - name: Publier sur VSCode Marketplace
+        run: npx --yes @vscode/vsce publish --skip-license --no-dependencies
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+
+      - name: Publier sur Open VSX
+        run: npx --yes ovsx publish --skip-license --no-dependencies
+        env:
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}
 
       - name: Créer la Release GitHub avec le .vsix attaché
         uses: softprops/action-gh-release@v2
