@@ -17,15 +17,12 @@ jobs:
 
     steps:
       - name: Récupérer le code
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Installer Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
-          node-version: "20"
-
-      - name: Installer les dépendances
-        run: npm ci
+          node-version: "26"
 
       - name: Vérifier la version dans package.json
         run: |
@@ -40,18 +37,18 @@ jobs:
           echo "Versions concordantes"
 
       - name: Construire le .vsix
-        run: npx --yes @vscode/vsce package --skip-license --no-dependencies
+        run: npx --yes @vscode/vsce@4.0.0 package --skip-license --no-dependencies
 
       - name: Vérifier que le fichier a bien été produit
         run: ls -la *.vsix
 
       - name: Publier sur VSCode Marketplace
-        run: npx --yes @vscode/vsce publish --skip-license --no-dependencies
+        run: npx --yes @vscode/vsce@4.0.0 publish --skip-license --no-dependencies
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
 
       - name: Publier sur Open VSX
-        run: npx --yes ovsx publish --skip-license --no-dependencies
+        run: npx --yes ovsx@1.2.0 publish --no-dependencies
         env:
           OVSX_PAT: ${{ secrets.OVSX_PAT }}
 
