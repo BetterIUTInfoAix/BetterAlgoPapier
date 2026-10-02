@@ -1,14 +1,14 @@
 # Better Algo Papier
 
-Extension pour Visual Studio Code et VSCodium dédiée à l'algorithmique sur papier de l'IUT d'Aix-en-Provence.
+Extension pour Visual Studio Code et VSCodium dédiée à l'algorithmique sur papier du BUT Info à amU (Site d'Aix-en-Provençe).
 
 ## Fonctionnalités
 
-- **Coloration syntaxique** : mots-clés, types, opérateurs, chaînes, nombres et appels de fonction.
+- **Coloration syntaxique** : mots-clés, types, opérateurs, chaînes, nombres et appels de fonction,
 - **Snippets** pour toutes les structures : `algorithme`, `si` / `sinon_si` / `sinon`, boucles `pour` / `tant_que` / `boucle` / `repeter`, `choix_sur`, déclarations…
-- **Auto-complétion** des mots-clés et des types (par exemple `ent` → `entier`).
-- **Indentation automatique** des blocs.
-- **Pliage de code** (folding) sur les blocs `debut`/`fin`, `si`/`fsi`, `boucle`/`fboucle` et `choix_sur`/`fchoix`.
+- **Auto-complétion** des mots-clés et des types (par exemple `ent` → `entier`),
+- **Indentation automatique** des blocs,
+- **Pliage de code** (folding) sur les blocs `debut`/`fin`, `si`/`fsi`, `boucle`/`fboucle` et `choix_sur`/`fchoix`,
 
 ## Installation
 
