@@ -32,7 +32,7 @@ jobs:
           fi
 
       - name: Installer Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: "26"
 
@@ -49,13 +49,13 @@ jobs:
         run: ls -la *.vsix
 
       - name: Garder le .vsix comme artefact
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: vsix
           path: "*.vsix"
 
       - name: Créer la Release GitHub avec le .vsix attaché
-        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
+        uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3 # v3.0.4
         with:
           tag_name: ${{ github.event.inputs.tag_name || github.ref_name }}
           target_commitish: ${{ github.sha }}
